@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maade! - Rolagem de Dados</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Rolagem de Dados</h1>
+      <p class="subtitle">Insira no formato: <code>(quantidade)d(lados)+(modificador)</code>. Ex: <code>1d20+17</code> ou <code>2d6*3</code></p>
+    </header>
+
+    <main>
+      <!-- Atalhos rápidos para dados comuns -->
+      <div class="quick-dice">
+        <button type="button" class="btn-dice" onclick="setDice('1d4', this)">d4</button>
+        <button type="button" class="btn-dice" onclick="setDice('1d6', this)">d6</button>
+        <button type="button" class="btn-dice" onclick="setDice('1d8', this)">d8</button>
+        <button type="button" class="btn-dice" onclick="setDice('1d10', this)">d10</button>
+        <button type="button" class="btn-dice" onclick="setDice('1d12', this)">d12</button>
+        <button type="button" class="btn-dice active" onclick="setDice('1d20', this)">d20</button>
+        <button type="button" class="btn-dice" onclick="setDice('1d100', this)">d100</button>
+      </div>
+
+      <!-- Formulário de Entrada -->
+      <form id="dice-form" onsubmit="handleRoll(event)">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="dice-input" 
+            placeholder="Ex: 1d20+17" 
+            autocomplete="off" 
+            value="1d20"
+            required
+          />
+          <button type="submit" id="roll-btn">Rolar</button>
+        </div>
+      </form>
+
+      <!-- Display de Resultado Geral -->
+      <div class="result-box" id="result-box">
+        <span class="result-label">Resultado</span>
+        <div class="result-value" id="total-result">-</div>
+        <div class="result-breakdown" id="result-breakdown">Aguardando rolagem...</div>
+      </div>
+
+      <!-- Histórico de Rolagens -->
+      <section class="history-section">
+        <h2>Histórico</h2>
+        <ul id="history-list">
+          <li class="empty-history">Nenhuma rolagem feita ainda.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p class="footer-credit">Feito por Yide</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
